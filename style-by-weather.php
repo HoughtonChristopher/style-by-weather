@@ -25,7 +25,7 @@ function style_by_weather($attributes) {
 	// forecast io
 	$user_weather = api_grab('http://api.forecast.io/forecast/fa22bafdebe78a1b4ab13a178fc5677b/'.$user_lat.','.$user_long);
 
-	current_weather($user_weather['currently']['icon']);
+	current_weather($user_weather['currently']['icon'],$element,$property);
 }
 
 function api_grab($input) {
@@ -33,7 +33,7 @@ function api_grab($input) {
 	return json_decode($input,true);
 }
 
-function current_weather($weather) {
+function current_weather($weather,$element,$property) {
 
 	switch($weather) {
 		case 'clear-day':
