@@ -8,7 +8,12 @@ Author URI: http://ghoulk.in
 License: MIT
 */
 
-function style_by_weather() {
+function style_by_weather($attributes) {
+
+	extract(shortcode_atts(array(
+		'element' => '.entry-content',
+		'property' => 'background-color'
+	), $attributes));
 
 	// freegeoip
 	$_SERVER['REMOTE_ADDR'] == '127.0.0.1' ? $user_ip = 'google.com' : $user_ip = $_SERVER['REMOTE_ADDR'];
@@ -29,11 +34,6 @@ function api_grab($input) {
 }
 
 function current_weather($weather) {
-
-	extract(shortcode_atts(array(
-		'element' => '.entry-content',
-		'property' => 'background-color'
-	), $attributes));
 
 	switch($weather) {
 		case 'clear-day':
