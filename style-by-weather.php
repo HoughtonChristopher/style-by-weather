@@ -2,10 +2,10 @@
 /*
 Plugin Name: Style by weather
 Description: Change your page based on local weather.
-Version: 0.0001
+Version: 0.5
 Author: Christopher Houghton
 Author URI: http://ghoulk.in	
-License: MIT
+License: CC
 */
 
 function style_by_weather($attributes) {
@@ -22,7 +22,8 @@ function style_by_weather($attributes) {
 	$user_long = strval($user_location['longitude']);
 
 	// forecast io
-	$user_weather = api_grab('http://api.forecast.io/forecast/fa22bafdebe78a1b4ab13a178fc5677b/'.$user_lat.','.$user_long);
+	$api_key = get_option('sbw_api_key');
+	$user_weather = api_grab('http://api.forecast.io/forecast/'.$api_key.'/'.$user_lat.','.$user_long);
 
 	current_weather($user_weather['currently']['icon'],$element);
 }
@@ -77,8 +78,10 @@ function style_by_weather_options() {
 	<td><input type="text" name="partly-cloudy-night" value="<?php echo get_option('partly-cloudy-night'); ?>" /></td></tr>
 	<th scope="row">Property to alter</th>
 	<td><input type="text" name="sbw_property" value="<?php echo get_option('sbw_property'); ?>" /></td></tr>
+	<th scope="row"><a href="https://developer.darkskyapp.com/">forecast.io API key</a></th>
+	<td><input type="text" name="sbw_api_key" value="<?php echo get_option('sbw_api_key'); ?>" /></td></tr>
 	</tr></table><input type="hidden" name="action" value="update" />
-	<input type="hidden" name="page_options" value="clear-day,clear-night,rain,snow,sleet,wind,fog,cloudy,partly-cloudy-day,partly-cloudy-night,sbw_property" />
+	<input type="hidden" name="page_options" value="clear-day,clear-night,rain,snow,sleet,wind,fog,cloudy,partly-cloudy-day,partly-cloudy-night,sbw_property,sbw_api_key" />
 	<p class="submit">
 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 	</p>
