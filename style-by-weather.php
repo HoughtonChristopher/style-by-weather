@@ -4,11 +4,11 @@ Plugin Name: Style by weather
 Description: Change your page based on local weather.
 Version: 1
 Author: Christopher Houghton
-Author URI: http://ghoulk.in	
-License: CC
+Author URI: http://ghoulk.in
+áLicense: CC
 */
 
-class WP_Style_by_Weather {
+class WP_Style_By_Weather {
 
 	public function __construct() {
 
@@ -119,6 +119,6 @@ class WP_Style_by_Weather {
 	}
 }
 
-$style_by_weather = new WP_Style_by_Weather();
+new WP_Style_By_Weather();
 
 ?>
