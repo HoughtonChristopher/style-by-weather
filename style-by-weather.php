@@ -5,7 +5,7 @@ Description: Change your page based on local weather.
 Version: 1
 Author: Christopher Houghton
 Author URI: http://ghoulk.in
-áLicense: CC
+License: MIT
 */
 
 class WP_Style_By_Weather {
