@@ -22,10 +22,12 @@ class WP_Style_By_Weather {
 		if( get_option( 'sbw_api_key' )) {
 
 			// Shortcode
-			add_shortcode( 'style-by-weather', array( $this, 'shortcode' ));
-		}
+			add_shortcode( 'style_by_weather', array( $this, 'shortcode' ));
+		} else {
 
-	 	else $this->do_error( 'Please fill out your forecast.io API info in SBW options.' );
+			// Error out
+			$this->do_error( 'Please fill out your forecast.io API info in SBW options.' );
+		}
 	}
 
 	public function shortcode( $attributes ) {
@@ -121,4 +123,3 @@ class WP_Style_By_Weather {
 
 new WP_Style_By_Weather();
 
-?>
