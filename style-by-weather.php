@@ -25,7 +25,7 @@ class WP_Style_by_Weather {
 			add_shortcode( 'style-by-weather', array( $this, 'shortcode' ));
 		}
 
-	 	else sbw_error( 'Please fill out your forecast.io API info in SBW options.' );
+	 	else $this->do_error( 'Please fill out your forecast.io API info in SBW options.' );
 	}
 
 	public function shortcode( $attributes ) {
