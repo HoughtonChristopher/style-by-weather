@@ -84,9 +84,11 @@ class WP_Style_By_Weather {
 			<h2>Style by Weather</h2>
 			<form method="post" action="options.php">	
 				<?php wp_nonce_field( 'update-options' ); ?>
+
 				<table class="form-table">
-				<tr valign="top">
+					
 				<?php
+
 				$weather_types = array(
 					'clear-day',
 					'clear-night',
@@ -105,16 +107,18 @@ class WP_Style_By_Weather {
 				  echo '<tr><th scope="row">' . ucwords( str_replace( "-", " ", $weather_type ) ) . ' value</th>';
 				  echo '<td><input type="text" name="' . $weather_type . '" value="' . get_option($weather_type) . '" /></td></tr>';
 				}
+
 				?>
+
 				<tr><th scope="row">Property to alter</th>
 				<td><input type="text" name="sbw_property" value="<?php echo get_option('sbw_property'); ?>" /></td></tr>
 				<tr><th scope="row"><a href="https://developer.darkskyapp.com/">forecast.io API key</a></th>
 				<td><input type="text" name="sbw_api_key" value="<?php echo get_option('sbw_api_key'); ?>" /></td></tr>
-				</tr></table><input type="hidden" name="action" value="update" />
+				</table>
+
+				<input type="hidden" name="action" value="update" />
 				<input type="hidden" name="page_options" value="clear-day,clear-night,rain,snow,sleet,wind,fog,cloudy,partly-cloudy-day,partly-cloudy-night,sbw_property,sbw_api_key" />
-				<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-				</p>
 			</form>
 		</div>
 		<?php
