@@ -86,34 +86,34 @@ class WP_Style_By_Weather {
 				<?php wp_nonce_field( 'update-options' ); ?>
 				<table class="form-table">
 				<tr valign="top">
-				<th scope="row">Clear Day value</th>
-				<td><input type="text" name="clear-day" value="<?php echo get_option('clear-day'); ?>" /></td></tr>
-				<th scope="row">Clear Night value</th>
-				<td><input type="text" name="clear-night" value="<?php echo get_option('clear-night'); ?>" /></td></tr>
-				<th scope="row">Rain value</th>
-				<td><input type="text" name="rain" value="<?php echo get_option('rain'); ?>" /></td></tr>
-				<th scope="row">Snow value</th>
-				<td><input type="text" name="snow" value="<?php echo get_option('snow'); ?>" /></td></tr>
-				<th scope="row">Sleet value</th>
-				<td><input type="text" name="sleet" value="<?php echo get_option('sleet'); ?>" /></td></tr>
-				<th scope="row">Wind value</th>
-				<td><input type="text" name="wind" value="<?php echo get_option('wind'); ?>" /></td></tr>
-				<th scope="row">Fog value</th>
-				<td><input type="text" name="fog" value="<?php echo get_option('fog'); ?>" /></td></tr>
-				<th scope="row">Cloudy value</th>
-				<td><input type="text" name="cloudy" value="<?php echo get_option('cloudy'); ?>" /></td></tr>
-				<th scope="row">Partly Cloudy Day value</th>
-				<td><input type="text" name="partly-cloudy-day" value="<?php echo get_option('partly-cloudy-day'); ?>" /></td></tr>
-				<th scope="row">Partly Cloudy Night value</th>
-				<td><input type="text" name="partly-cloudy-night" value="<?php echo get_option('partly-cloudy-night'); ?>" /></td></tr>
-				<th scope="row">Property to alter</th>
+				<?php
+				$weather_types = array(
+					'clear-day',
+					'clear-night',
+					'rain',
+					'snow',
+					'sleet',
+					'wind',
+					'fog',
+					'cloudy',
+					'partly-cloudy-day',
+					'partly-cloudy-night'
+				);
+
+				foreach($weather_types as $weather_type) {
+
+				  echo '<tr><th scope="row">' . ucwords( str_replace( "-", " ", $weather_type ) ) . ' value</th>';
+				  echo '<td><input type="text" name="' . $weather_type . '" value="' . get_option($weather_type) . '" /></td></tr>';
+				}
+				?>
+				<tr><th scope="row">Property to alter</th>
 				<td><input type="text" name="sbw_property" value="<?php echo get_option('sbw_property'); ?>" /></td></tr>
-				<th scope="row"><a href="https://developer.darkskyapp.com/">forecast.io API key</a></th>
+				<tr><th scope="row"><a href="https://developer.darkskyapp.com/">forecast.io API key</a></th>
 				<td><input type="text" name="sbw_api_key" value="<?php echo get_option('sbw_api_key'); ?>" /></td></tr>
 				</tr></table><input type="hidden" name="action" value="update" />
 				<input type="hidden" name="page_options" value="clear-day,clear-night,rain,snow,sleet,wind,fog,cloudy,partly-cloudy-day,partly-cloudy-night,sbw_property,sbw_api_key" />
 				<p class="submit">
-					<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+				<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 				</p>
 			</form>
 		</div>
