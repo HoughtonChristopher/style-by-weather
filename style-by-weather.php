@@ -4,7 +4,7 @@ Plugin Name: Style by weather
 Description: Change your page based on local weather.
 Version: 1
 Author: Christopher Houghton
-Author URI: http://ghoulk.in
+Author URI: http://osofantasti.co
 License: MIT
 */
 
